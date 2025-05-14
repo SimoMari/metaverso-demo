@@ -2,53 +2,41 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Metaverso VR Demo</title>
+    <title>Metaverso Demo Realistica</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   </head>
   <body>
     <a-scene>
-      <!-- Avatar base -->
-      <a-entity id="cameraRig">
-        <a-entity camera look-controls wasd-controls position="0 1.6 0">
-          <a-entity geometry="primitive: sphere; radius: 0.1" material="color: red" position="0 0 -0.5"></a-entity>
-        </a-entity>
+      <!-- Asset Management -->
+      <a-assets>
+        <a-asset-item id="cabinetModel" src="https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Models@master/2.0/ArcadeMachine/glTF-Binary/ArcadeMachine.glb"></a-asset-item>
+        <img id="wallTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+        <img id="floorTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+      </a-assets>
+
+      <!-- Camera -->
+      <a-entity camera look-controls wasd-controls position="0 1.6 4">
+        <a-entity geometry="primitive: sphere; radius: 0.1" material="color: red" position="0 0 -0.5"></a-entity>
       </a-entity>
 
-      <!-- Ambiente: cielo, pavimento, pareti -->
-      <a-sky color="#87CEEB"></a-sky>
-      <a-plane position="0 0 0" rotation="-90 0 0" width="50" height="50" color="#7CFC00"></a-plane>
-      <a-box position="-10 2.5 0" rotation="0 90 0" width="20" height="5" depth="0.1" color="#cccccc"></a-box>
-      <a-box position="10 2.5 0" rotation="0 90 0" width="20" height="5" depth="0.1" color="#cccccc"></a-box>
-      <a-box position="0 2.5 -10" width="20" height="5" depth="0.1" color="#cccccc"></a-box>
+      <!-- Sky -->
+      <a-sky color="#dbe9f4"></a-sky>
 
-      <!-- Luci realistiche -->
-      <a-light type="ambient" intensity="0.4"></a-light>
-      <a-light type="directional" intensity="0.8" position="3 10 1" castShadow="true"></a-light>
+      <!-- Pavimento con texture -->
+      <a-plane rotation="-90 0 0" width="50" height="50" src="#floorTexture" repeat="10 10"></a-plane>
 
-      <!-- Oggetti 3D decorativi -->
-      <a-box position="-2 1.5 -5" depth="0.5" height="1.5" width="1" color="#333"></a-box>
-      <a-text value="Cabinato 1" position="-2 2.5 -5" width="4" color="yellow"></a-text>
+      <!-- Pareti con texture -->
+      <a-box position="0 2.5 -10" width="20" height="5" depth="0.1" src="#wallTexture"></a-box>
+      <a-box position="-10 2.5 0" rotation="0 90 0" width="20" height="5" depth="0.1" src="#wallTexture"></a-box>
+      <a-box position="10 2.5 0" rotation="0 90 0" width="20" height="5" depth="0.1" src="#wallTexture"></a-box>
 
-      <a-box position="2 1.5 -5" depth="0.5" height="1.5" width="1" color="#333"></a-box>
-      <a-text value="Cabinato 2" position="2 2.5 -5" width="4" color="yellow"></a-text>
+      <!-- Cabinato arcade 3D -->
+      <a-entity gltf-model="#cabinetModel" position="0 0 -3" scale="3 3 3"></a-entity>
 
-      <!-- Immagine su parete -->
-      <a-image src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Iconic_image_of_a_classic_arcade_machine.png" position="0 2 -9.9" width="4" height="3"></a-image>
-
-      <!-- Video (muto) su una parete -->
-      <a-video src="https://cdn.aframe.io/videos/bunny.mp4" position="-5 2 -9.9" width="4" height="2.25" autoplay loop muted></a-video>
-
-      <!-- Audio ambientale -->
-      <a-sound src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav" autoplay="true" loop="true" position="0 2 0"></a-sound>
-
-      <!-- Link interattivo -->
-      <a-box position="0 1 -2" depth="0.3" height="0.5" width="2" color="#0000ff" class="clickable"
-             event-set__enter="_event: mouseenter; color: #00ffff"
-             event-set__leave="_event: mouseleave; color: #0000ff"
-             onclick="window.open('https://insertcoinstories.com', '_blank')">
-        <a-text value="Visita il blog!" align="center" color="#ffffff" position="0 0 0.2" width="4"></a-text>
-      </a-box>
+      <!-- Luci -->
+      <a-light type="ambient" intensity="0.6"></a-light>
+      <a-light type="directional" position="2 4 2" intensity="0.7" castShadow="true"></a-light>
     </a-scene>
   </body>
 </html>
