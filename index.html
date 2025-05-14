@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Metaverso con HDRI</title>
+    <title>Metaverso HDRI come Wall</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   </head>
@@ -11,8 +11,8 @@
       <a-assets>
         <a-asset-item id="arcadeModel" src="arcade.glb"></a-asset-item>
         <img id="floorTexture" src="floor.jpg">
-        <img id="wallTexture" src="wall.jpg">
-        <img id="skyTexture" src="https://acg-download.struffelproductions.com/file/ambientCG-Web/download/DaySkyHDRI057A_UMF29Zwz/DaySkyHDRI057A_16K-TONEMAPPED.jpg">
+        <img id="wallTexture" src="DaySkyHDRI057A_16K-TONEMAPPED.jpg">
+        <img id="skyTexture" src="DaySkyHDRI057A_16K-TONEMAPPED.jpg">
       </a-assets>
 
       <!-- Sky HDRI -->
@@ -26,7 +26,7 @@
       <!-- Pavimento -->
       <a-plane rotation="-90 0 0" width="50" height="50" src="#floorTexture" repeat="10 10"></a-plane>
 
-      <!-- Pareti -->
+      <!-- Pareti con HDRI -->
       <a-box position="0 2.5 -10" width="20" height="5" depth="0.1" src="#wallTexture"></a-box>
       <a-box position="-10 2.5 0" rotation="0 90 0" width="20" height="5" depth="0.1" src="#wallTexture"></a-box>
       <a-box position="10 2.5 0" rotation="0 90 0" width="20" height="5" depth="0.1" src="#wallTexture"></a-box>
@@ -40,7 +40,7 @@
       <a-light type="point" position="0 5 -3" intensity="1.5" decay="2" distance="30" color="#ffffff"></a-light>
 
       <!-- Versione -->
-      <a-text value="A-Frame 1.5.0 + HDRI Sky" position="-4 4.5 -8" color="#000000" width="6"></a-text>
+      <a-text value="A-Frame 1.5.0 - HDRI as Wall + Sky" position="-4 4.5 -8" color="#000000" width="6"></a-text>
     </a-scene>
   </body>
 </html>
