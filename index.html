@@ -2,18 +2,21 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Metaverso Demo - Luci e Modello Fix</title>
+    <title>Metaverso con HDRI</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   </head>
   <body>
     <a-scene background="color: #ECECEC">
-      <!-- Asset Management -->
       <a-assets>
-        <a-asset-item id="duckModel" src="https://cdn.aframe.io/test-models/models/glTF/Duck/glTF-Binary/Duck.glb"></a-asset-item>
-        <img id="wallTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
-        <img id="floorTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+        <a-asset-item id="arcadeModel" src="arcade.glb"></a-asset-item>
+        <img id="floorTexture" src="floor.jpg">
+        <img id="wallTexture" src="wall.jpg">
+        <img id="skyTexture" src="https://acg-download.struffelproductions.com/file/ambientCG-Web/download/DaySkyHDRI057A_UMF29Zwz/DaySkyHDRI057A_16K-TONEMAPPED.jpg">
       </a-assets>
+
+      <!-- Sky HDRI -->
+      <a-sky src="#skyTexture" rotation="0 -90 0"></a-sky>
 
       <!-- Camera -->
       <a-entity camera look-controls wasd-controls position="0 1.6 4">
@@ -28,16 +31,16 @@
       <a-box position="-10 2.5 0" rotation="0 90 0" width="20" height="5" depth="0.1" src="#wallTexture"></a-box>
       <a-box position="10 2.5 0" rotation="0 90 0" width="20" height="5" depth="0.1" src="#wallTexture"></a-box>
 
-      <!-- Modello 3D: Duck test model -->
-      <a-entity gltf-model="#duckModel" position="0 0 -3" scale="1 1 1"></a-entity>
+      <!-- Modello arcade -->
+      <a-entity gltf-model="#arcadeModel" position="0 0 -3" scale="3 3 3"></a-entity>
 
-      <!-- Luci migliorate -->
+      <!-- Luci -->
       <a-light type="ambient" intensity="1"></a-light>
       <a-light type="directional" position="2 10 5" intensity="1.2" castShadow="true"></a-light>
       <a-light type="point" position="0 5 -3" intensity="1.5" decay="2" distance="30" color="#ffffff"></a-light>
 
-      <!-- Versione visibile -->
-      <a-text value="A-Frame 1.5.0" position="-4 4.5 -8" color="#000000" width="6"></a-text>
+      <!-- Versione -->
+      <a-text value="A-Frame 1.5.0 + HDRI Sky" position="-4 4.5 -8" color="#000000" width="6"></a-text>
     </a-scene>
   </body>
 </html>
